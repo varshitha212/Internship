@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4caf50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+        <button onclick="convert('celsius')">Convert to Fahrenheit and Kelvin</button>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        function convert(fromUnit) {
+            var input = document.getElementById(fromUnit);
+            var temperature = parseFloat(input.value);
+            
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+            
+            if (fromUnit === "celsius") {
+                var fahrenheit = (temperature * 9/5) + 32;
+                var kelvin = temperature + 273.15;
+                
+                resultDiv.innerHTML += temperature + " degrees Celsius = " + fahrenheit + " degrees Fahrenheit<br>";
+                resultDiv.innerHTML += temperature + " degrees Celsius = " + kelvin + " Kelvin";
+            } else if (fromUnit === "fahrenheit") {
+                var celsius = (temperature - 32) * 5/9;
+                var kelvin = (temperature + 459.67) * 5/9;
+                
+                resultDiv.innerHTML += temperature + " degrees Fahrenheit = " + celsius + " degrees Celsius<br>";
+                resultDiv.innerHTML += temperature + " degrees Fahrenheit = " + kelvin + " Kelvin";
+            } else if (fromUnit === "kelvin") {
+                var celsius = temperature - 273.15;
+                var fahrenheit = (temperature * 9/5) - 459.67;
+                
+                resultDiv.innerHTML += temperature + " Kelvin = " + celsius + " degrees Celsius<br>";
+                resultDiv.innerHTML += temperature + " Kelvin = " + fahrenheit + " degrees Fahrenheit";
+            }
+        }
+    </script>
+</body>
+</html>
